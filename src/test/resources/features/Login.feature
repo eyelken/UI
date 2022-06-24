@@ -55,7 +55,6 @@ Feature: Login feature
       | username                | password |
       | paulinaberg1@gmail.comM | 12345678 |
 
-    @wip
   Scenario: Verify default inputbox positions / AZ
     And chooses Azerbaijan
     Then the user lands to the home page
@@ -67,6 +66,19 @@ Feature: Login feature
     Then the user lands to the home page
     And the user clicks on the login button on the home page
     Then the user should see the placeholders
+
+  Scenario: Forgot password and reset password / AZ
+    And chooses Azerbaijan
+    Then the user lands to the home page
+    And the user clicks on the login button on the home page
+    Then the user click to forgot my password button
+    Then enters the email adress and clicks continue
+    And the user is able to see the validation message on the screen
+
+
+
+
+
 
 
 

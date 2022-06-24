@@ -41,11 +41,53 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//div[@class='error']")
     public WebElement errorMsg;
 
-    public void navigateToLogin() throws InterruptedException {
+    @FindBy(className = "forgot-password")
+    public WebElement forgotPassword;
 
+    @FindBy(xpath = "//input[@type='email']")
+    public WebElement forgotEmail;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/form/div[1]/div/div/p")
+    public WebElement validationMsg;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement forgotSubmit;
+
+    @FindBy(xpath = "/html/body/header/div[2]/div/div/div/div/div[4]/div[2]/div/div[2]/a[5]")
+    public WebElement logoutBtn;
+
+    public void navigateToLogin() throws InterruptedException {
         avatarIcon.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         loginbtn.click();
+    }
+
+    public void navigateToLogout(){
+        avatarIcon.click();
+        logoutBtn.click();
+    }
+
+    public void loginAZ() throws InterruptedException {
+        String url=ConfigurationReader.get("url");
+        Driver.get().get(url);
+
+        Driver.get().findElement(By.xpath("/html/body/div/div[1]/div[2]/div[3]/a[1]")).click();
+        BrowserUtils.waitFor(3);
+
+        cookies.click();
+
+        navigateToLogin();
+
+        userName.click();
+        userName.sendKeys("paulinaberg1@gmail.com");
+        BrowserUtils.waitFor(2);
+
+        password.click();
+        password.sendKeys("123456");
+        BrowserUtils.waitFor(3);
+
+        submit.click();
+
 
 
     }

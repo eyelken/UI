@@ -9,16 +9,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.logging.Log;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginStepDefs {
+
 
     @Given("the user is on the welcome page")
     public void the_user_is_on_the_welcome_page() {
@@ -45,7 +43,7 @@ public class LoginStepDefs {
 
     @Given("the user clicks on the login button on the home page")
     public void the_user_clicks_on_the_login_button_on_the_home_page() throws InterruptedException {
-        BrowserUtils.waitFor(2);
+        BrowserUtils.waitFor(3);
         new LoginPage().navigateToLogin();
     }
 
@@ -65,10 +63,7 @@ public class LoginStepDefs {
 
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() {
-        LoginPage loginPage=new LoginPage();
         BrowserUtils.waitFor(2);
-        String expectedMsg=loginPage.loggedIn.getText();
-        System.out.println("expectedMsg = " + expectedMsg);
     }
 
 
@@ -109,6 +104,26 @@ public class LoginStepDefs {
         Assert.assertEquals("Password", loginPage.password.getAttribute("placeholder"));
 
     }
+
+    @Then("the user click to forgot my password button")
+    public void the_user_click_to_forgot_my_password_button() {
+        LoginPage loginPage=new LoginPage();
+        loginPage.forgotPassword.click();
+    }
+
+    @Then("enters the email adress and clicks continue")
+    public void enters_the_email_adress_and_clicks_continue() {
+        LoginPage loginPage=new LoginPage();
+        loginPage.forgotEmail.sendKeys("paulinaberg1@gmail.com");
+        BrowserUtils.waitFor(2);
+        loginPage.forgotSubmit.click();
+    }
+
+    @Then("the user is able to see the validation message on the screen")
+    public void the_user_is_able_to_see_the_validation_message_on_the_screen()  {
+        Assert.assertEquals("Please check your e-mail for reset your password.",new LoginPage().validationMsg);
+    }
+
 
 
 
