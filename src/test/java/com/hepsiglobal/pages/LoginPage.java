@@ -56,6 +56,14 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "/html/body/header/div[2]/div/div/div/div/div[4]/div[2]/div/div[2]/a[5]")
     public WebElement logoutBtn;
 
+    @FindBy(xpath = "/html/body/header/div[1]/div/div/div[2]/div/div/div[1]/img")
+    public WebElement countryLogo;
+
+    @FindBy(xpath = "/html/body/header/div[2]/div/div/div/div/div[4]/div[2]/div/div[2]/a[1]")
+    public WebElement profile;
+
+
+
     public void navigateToLogin() throws InterruptedException {
         avatarIcon.click();
         Thread.sleep(3000);
@@ -65,6 +73,11 @@ public class LoginPage extends BasePage{
     public void navigateToLogout(){
         avatarIcon.click();
         logoutBtn.click();
+    }
+
+    public void navigateToProfile(){
+        avatarIcon.click();
+        profile.click();
     }
 
     public void loginAZ() throws InterruptedException {

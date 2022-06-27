@@ -41,6 +41,20 @@ public class LoginStepDefs {
         new LoginPage().cookies.click();
     }
 
+    @Then("the user should see the country logo for Azerbaijan")
+    public void the_user_should_see_the_country_logo_for_Azerbaijan() {
+        LoginPage loginPage=new LoginPage();
+        String actualCountry= loginPage.countryLogo.getAttribute("title");
+        Assert.assertEquals("Azerbaijan", actualCountry);
+    }
+
+    @Then("the user should see the country logo for Israel")
+    public void the_user_should_see_the_country_logo_for_Israel() {
+        LoginPage loginPage=new LoginPage();
+        String actualCountry=loginPage.countryLogo.getAttribute("title");
+        Assert.assertEquals("Israel", actualCountry);
+    }
+
     @Given("the user clicks on the login button on the home page")
     public void the_user_clicks_on_the_login_button_on_the_home_page() throws InterruptedException {
         BrowserUtils.waitFor(3);
@@ -123,6 +137,9 @@ public class LoginStepDefs {
     public void the_user_is_able_to_see_the_validation_message_on_the_screen()  {
         Assert.assertEquals("Please check your e-mail for reset your password.",new LoginPage().validationMsg);
     }
+
+
+
 
 
 

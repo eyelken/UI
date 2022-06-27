@@ -1,6 +1,5 @@
 package com.hepsiglobal.step_definitions;
 
-import com.hepsiglobal.pages.HomePage;
 import com.hepsiglobal.pages.LoginPage;
 import com.hepsiglobal.utilities.BrowserUtils;
 import com.hepsiglobal.utilities.Driver;
