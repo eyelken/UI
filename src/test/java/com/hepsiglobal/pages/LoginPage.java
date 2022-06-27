@@ -62,8 +62,6 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "/html/body/header/div[2]/div/div/div/div/div[4]/div[2]/div/div[2]/a[1]")
     public WebElement profile;
 
-
-
     public void navigateToLogin() throws InterruptedException {
         avatarIcon.click();
         Thread.sleep(3000);
@@ -75,8 +73,9 @@ public class LoginPage extends BasePage{
         logoutBtn.click();
     }
 
-    public void navigateToProfile(){
+    public void navigateToProfile() throws InterruptedException {
         avatarIcon.click();
+        Thread.sleep(2000);
         profile.click();
     }
 

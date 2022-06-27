@@ -8,17 +8,26 @@ import org.junit.Assert;
 
 public class MyAccountStepDefs {
 
-    LoginPage loginPage=new LoginPage();
 
-    @Then("the user clicks to the {string}")
-    public void the_user_clicks_to_the(String profile) {
+    @Then("the user clicks to the profile")
+    public void the_user_clicks_to_the_profile() throws InterruptedException {
+        LoginPage loginPage=new LoginPage();
+        BrowserUtils.waitFor(3);
+        loginPage.navigateToProfile();
+    }
+
+    @Then("the user is able to land to the My Account")
+    public void the_user_is_able_to_land_to_the_My_Account() {
+        Assert.assertTrue(Driver.get().getCurrentUrl().contains("account"));
+
+    }
+
+    @Then("logs in with valid credentials")
+    public void logs_in_with_valid_credentials() throws InterruptedException {
+        LoginPage loginPage=new LoginPage();
         BrowserUtils.waitFor(2);
-        loginPage.profile.click();
-    }
-
-    @Then("the user is able to land to the {string}")
-    public void the_user_is_able_to_land_to_the(String account) {
-        Assert.assertTrue(Driver.get().getCurrentUrl().contains(account));
+        loginPage.loginAZ();
 
     }
+
 }

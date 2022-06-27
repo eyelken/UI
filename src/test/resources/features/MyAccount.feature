@@ -5,10 +5,8 @@ Feature: My Account feature
 
     @wip
   Scenario: Updating profile
-    And chooses Azerbaijan
-    Then the user lands to the home page
-    And the user clicks on the login button on the home page
-    And the user clicks to the "Profile"
-    Then the user is able to land to the "My Account"
+    And logs in with valid credentials
+    And the user clicks to the profile
+    Then the user is able to land to the My Account
 
 
