@@ -1,12 +1,18 @@
 Feature: My Account feature
 
-  Background:
-    Given the user is on the welcome page
-
-    @wip
-  Scenario: Updating profile
-    And logs in with valid credentials
+  Scenario: Updating profile name / AZ
+    Given the user logs in successfully -az
     And the user clicks to the profile
     Then the user is able to land to the My Account
+    And the user updates the name
+
+  Scenario: Updating profile name / IS
+    Given the user logs in successfully -is
+    And the user clicks to the profile
+    Then the user is able to land to the My Account
+    And the user updates the name
+
+
+
 
 

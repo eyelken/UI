@@ -10,9 +10,16 @@ import org.junit.Assert;
 public class LogoutStepDefs {
     LoginPage loginPage=new LoginPage();
 
-    @Given("the user logs in successfully")
-    public void the_user_logs_in_successfully() throws InterruptedException {
+    @Given("the user logs in successfully -az")
+    public void the_user_logs_in_successfully_az() throws InterruptedException {
+        Thread.sleep(2000);
         loginPage.loginAZ();
+    }
+
+    @Given("the user logs in successfully -is")
+    public void the_user_logs_in_successfully_is() throws InterruptedException {
+        Thread.sleep(2000);
+        loginPage.loginIS();
     }
 
     @Then("the user clicks on the log out button")

@@ -64,7 +64,6 @@ public class LoginPage extends BasePage{
 
     public void navigateToLogin() throws InterruptedException {
         avatarIcon.click();
-        Thread.sleep(3000);
         loginbtn.click();
     }
 
@@ -91,16 +90,36 @@ public class LoginPage extends BasePage{
         navigateToLogin();
 
         userName.click();
-        userName.sendKeys("paulinaberg1@gmail.com");
+        userName.sendKeys(ConfigurationReader.get("username"));
         BrowserUtils.waitFor(2);
 
         password.click();
-        password.sendKeys("123456");
+        password.sendKeys(ConfigurationReader.get("password"));
         BrowserUtils.waitFor(3);
 
         submit.click();
+    }
 
+    public void loginIS() throws InterruptedException {
+        String url=ConfigurationReader.get("url");
+        Driver.get().get(url);
 
+        Driver.get().findElement(By.xpath("/html/body/div/div[1]/div[2]/div[3]/a[2]")).click();
+        BrowserUtils.waitFor(3);
+
+        cookies.click();
+
+        navigateToLogin();
+
+        userName.click();
+        userName.sendKeys(ConfigurationReader.get("username"));
+        BrowserUtils.waitFor(2);
+
+        password.click();
+        password.sendKeys(ConfigurationReader.get("password"));
+        BrowserUtils.waitFor(3);
+
+        submit.click();
 
     }
 

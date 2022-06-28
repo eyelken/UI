@@ -7,13 +7,8 @@ import com.hepsiglobal.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.logging.Log;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginStepDefs {
 
@@ -61,15 +56,15 @@ public class LoginStepDefs {
         new LoginPage().navigateToLogin();
     }
 
-    @When("the user logs in using {string} and {string}")
-    public void the_user_logs_in_using_and(String username, String password) throws InterruptedException {
+    @When("the user logs with valid credentials")
+    public void the_user_logs_with_valid_credentials() {
         LoginPage loginPage=new LoginPage();
         loginPage.userName.click();
-        loginPage.userName.sendKeys("paulinaberg1@gmail.com");
+        loginPage.userName.sendKeys(ConfigurationReader.get("username"));
         BrowserUtils.waitFor(2);
 
         loginPage.password.click();
-        loginPage.password.sendKeys("123456");
+        loginPage.password.sendKeys(ConfigurationReader.get("password"));
         BrowserUtils.waitFor(3);
 
         loginPage.submit.click();

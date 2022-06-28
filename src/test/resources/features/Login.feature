@@ -8,15 +8,16 @@ Feature: Login feature
     Then the user lands to the home page
     And the user should see the country logo for Azerbaijan
     And the user clicks on the login button on the home page
-    When the user logs in using "paulinaberg1@gmail.com" and "123456"
+    When the user logs with valid credentials
     Then the user should be able to login
 
+      @wip
   Scenario: Login with valid credentials / IS
     And chooses Israel
     Then the user lands to the home page
     Then the user should see the country logo for Israel
     And the user clicks on the login button on the home page
-    When the user logs in using "paulinaberg1@gmail.com" and "123456"
+    When the user logs with valid credentials
     Then the user should be able to login
 
 
