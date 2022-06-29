@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
         glue = "com/hepsiglobal/step_definitions",
         dryRun = false,
         tags = "@wip"
-
 )
 
 public class CukesRunner {

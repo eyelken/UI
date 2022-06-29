@@ -11,7 +11,7 @@ Feature: Login feature
     When the user logs with valid credentials
     Then the user should be able to login
 
-      @wip
+
   Scenario: Login with valid credentials / IS
     And chooses Israel
     Then the user lands to the home page
