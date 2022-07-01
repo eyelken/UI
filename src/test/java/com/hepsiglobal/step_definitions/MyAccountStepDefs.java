@@ -9,17 +9,9 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MyAccountStepDefs {
 
@@ -61,6 +53,8 @@ public class MyAccountStepDefs {
         Assert.assertEquals(firstName,actualFirst);
         Assert.assertEquals(middleName, actualMiddle);
         Assert.assertEquals(lastName, actualLast);
+
+        Driver.get().findElement(By.xpath("//button[@class='btn btn-primary save-profile']")).click();
     }
             /*
         Male=0
@@ -158,5 +152,45 @@ public class MyAccountStepDefs {
 
         Driver.get().findElement(By.xpath("//button[@class='btn btn-primary save-profile']")).click();
         Thread.sleep(2000);
+    }
+    @Then("the user is navigating to the Addresses")
+    public void the_user_is_navigating_to_the_Addresses() throws InterruptedException {
+        MyAccountPage myAccountPage=new MyAccountPage();
+        myAccountPage.navigateToAddressAZ();
+    }
+
+    @Then("the user is able to change the address")
+    public void the_user_is_able_to_change_the_address() throws InterruptedException {
+        MyAccountPage myAccountPage=new MyAccountPage();
+        Locale locale=new Locale("az");
+        Faker faker=new Faker(locale);
+
+        Thread.sleep(3000);
+        String firstName= faker.name().firstName();
+        String middleName= faker.name().nameWithMiddle();
+        String lastName= faker.name().lastName();
+        String city= faker.address().cityName();
+        String zipcode=faker.address().zipCode();
+        String district= faker.address().streetAddress();
+        String fullAddress= city+district+faker.address().fullAddress();
+        String phone=faker.phoneNumber().cellPhone();
+        String fincode=faker.number().digits(6);
+
+        myAccountPage.addressAlias.click();
+        myAccountPage.addressAlias.sendKeys(firstName);
+        myAccountPage.addressFirstname.sendKeys(firstName);
+        myAccountPage.addressMiddlename.sendKeys(middleName);
+        myAccountPage.addressLastname.sendKeys(lastName);
+        myAccountPage.addressPhone.sendKeys(phone);
+        myAccountPage.addressCity.sendKeys(city);
+        myAccountPage.addressDistrict.sendKeys(district);
+        myAccountPage.addressZipcode.sendKeys(zipcode);
+        myAccountPage.addressFull.sendKeys(fullAddress);
+        myAccountPage.addressFincode.sendKeys(fincode);
+
+        Driver.get().findElement(By.xpath("//button[@class='save btn-primary']")).click();
+        Thread.sleep(3000);
+
+
     }
     }

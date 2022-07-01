@@ -1,13 +1,11 @@
 package com.hepsiglobal.pages;
 
-import com.github.javafaker.Faker;
 import com.hepsiglobal.utilities.BrowserUtils;
 import com.hepsiglobal.utilities.ConfigurationReader;
 import com.hepsiglobal.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage{
 
